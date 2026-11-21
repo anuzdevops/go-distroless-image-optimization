@@ -7,8 +7,6 @@ import (
 	"github.com/anuzdevops/go-distroless-image-optimization/internal/web"
 )
 
-// NewDashboardHandler loads the embedded dashboard template
-// and returns an HTTP handler for the home page.
 func NewDashboardHandler() (http.Handler, error) {
 	tmpl, err := template.ParseFS(
 		web.Templates(),
@@ -19,20 +17,21 @@ func NewDashboardHandler() (http.Handler, error) {
 	}
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != http.MethodGet {
-			w.Header().Set("Allow", http.MethodGet)
+		if r.Method != http.MethodGet && r.Method != http.MethodHead {
+			w.Header().Set("Allow", "GET, HEAD")
 			http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 			return
 		}
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
+		if r.Method == http.MethodHead {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
 		if err := tmpl.ExecuteTemplate(w, "index.html", nil); err != nil {
-			http.Error(
-				w,
-				"Failed to render dashboard",
-				http.StatusInternalServerError,
-			)
+			http.Error(w, "Failed to render dashboard", http.StatusInternalServerError)
 			return
 		}
 	}), nil

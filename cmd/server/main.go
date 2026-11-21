@@ -30,9 +30,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("static assets initialization failed: %v", err)
 	}
-
+	metricsFile := os.Getenv("METRICS_FILE")
+	if metricsFile == "" {
+		metricsFile = "image-metrics.json"
+	}
 	mux := http.NewServeMux()
-
+	mux.Handle("/api/metrics", handlers.NewMetricsHandler(metricsFile))
 	mux.Handle("/", dashboardHandler)
 	mux.Handle("/health", handlers.NewHealthHandler())
 	mux.Handle(
