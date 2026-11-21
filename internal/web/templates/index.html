@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ContainerScope - Docker image optimization dashboard">
+    <title>ContainerScope | Docker Image Optimization</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">C</div>
+                <div>
+                    <h2>ContainerScope</h2>
+                    <span>Container Engineering</span>
+                </div>
+            </div>
+
+            <nav>
+                <p class="nav-label">WORKSPACE</p>
+                <a href="/" class="nav-item active">Overview</a>
+                <a href="#optimization" class="nav-item">Optimization</a>
+                <a href="#architecture" class="nav-item">Architecture</a>
+
+                <p class="nav-label">SYSTEM</p>
+                <a href="/health" class="nav-item">Health status</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Application running
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <span class="breadcrumb">Workspace / Overview</span>
+                    <h1>Container Image Optimization</h1>
+                </div>
+                <span class="environment-badge">LOCAL ENVIRONMENT</span>
+            </header>
+
+            <section class="welcome">
+                <p class="eyebrow">CONTAINER ENGINEERING</p>
+                <h2>Build smaller. Deploy smarter.</h2>
+                <p>
+                    Explore how Docker multi-stage builds and minimal
+                    runtime images reduce container footprint.
+                </p>
+            </section>
+
+            <section class="metrics" id="optimization">
+                <article class="metric-card">
+                    <span>Baseline image</span>
+                    <h3 id="baseline-size">Pending</h3>
+                    <p>Standard Go container</p>
+                </article>
+
+                <article class="metric-card">
+                    <span>Optimized image</span>
+                    <h3 id="optimized-size">Pending</h3>
+                    <p>Distroless runtime</p>
+                </article>
+
+                <article class="metric-card">
+                    <span>Image reduction</span>
+                    <h3 id="reduction">Pending</h3>
+                    <p>Measured optimization</p>
+                </article>
+
+                <article class="metric-card">
+                    <span>Runtime security</span>
+                    <h3>Non-root</h3>
+                    <p>Reduced attack surface</p>
+                </article>
+            </section>
+
+            <section class="panel" id="architecture">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">BUILD ARCHITECTURE</p>
+                        <h2>Multi-stage Docker build</h2>
+                    </div>
+                    <span class="tag">PLANNED</span>
+                </div>
+
+                <div class="architecture">
+                    <div class="stage">
+                        <span class="stage-number">01</span>
+                        <h3>Builder stage</h3>
+                        <p>Go compiler, source code and dependencies.</p>
+                        <span class="stage-tag">BUILD ENVIRONMENT</span>
+                    </div>
+
+                    <div class="connector">→</div>
+
+                    <div class="stage">
+                        <span class="stage-number">02</span>
+                        <h3>Distroless stage</h3>
+                        <p>Compiled binary and minimal runtime files.</p>
+                        <span class="stage-tag">PRODUCTION RUNTIME</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                ContainerScope · Go + Docker + Distroless
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
