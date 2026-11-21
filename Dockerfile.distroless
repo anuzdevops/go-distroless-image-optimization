@@ -1,0 +1,34 @@
+
+# ==========================================
+# Stage 1: Build the Go application
+# ==========================================
+FROM golang:1.27.4 AS builder
+
+WORKDIR /app
+
+COPY go.mod ./
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+    go build \
+    -trimpath \
+    -ldflags="-s -w" \
+    -o containerscope \
+    ./cmd/server
+
+# ==========================================
+# Stage 2: Google Distroless runtime
+# ==========================================
+FROM gcr.io/distroless/static-debian13:nonroot
+
+COPY --from=builder /app/containerscope /containerscope
+
+EXPOSE 8080
+
+ENV PORT=8080
+
+USER nonroot:nonroot
+
+ENTRYPOINT ["/containerscope"]

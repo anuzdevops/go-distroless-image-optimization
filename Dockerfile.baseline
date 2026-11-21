@@ -1,0 +1,27 @@
+
+# Stage 1: Use the complete Go image
+FROM golang:1.27.4
+
+# Set application working directory
+WORKDIR /app
+
+# Copy Go module definition
+COPY go.mod ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy application source code
+COPY . .
+
+# Compile the Go application
+RUN CGO_ENABLED=0 GOOS=linux go build -o containerscope ./cmd/server
+
+# Application port
+EXPOSE 8080
+
+# Default application port
+ENV PORT=8080
+
+# Start application
+CMD ["./containerscope"]
