@@ -4,10 +4,11 @@
 **See what your container really carries.**
 Compare Docker build strategies — size, dependencies & security — with real numbers.
 
-[[Go](https://img.shields.io/badge/Go-1.27.4-00ADD8?logo=go&logoColor=white)](https://go.dev)
-[[Docker](https://img.shields.io/badge/Docker-Multi--stage-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
-[[Distroless](https://img.shields.io/badge/Distroless-nonroot-4285F4?logo=google&logoColor=white)](https://github.com/GoogleContainerTools/distroless)
-[[License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Go](https://img.shields.io/badge/Go-1.27.4-00ADD8?logo=go&logoColor=white)](https://go.dev)
+[![Docker](https://img.shields.io/badge/Docker-Multi--stage-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
+[![Distroless](https://img.shields.io/badge/Distroless-nonroot-4285F4?logo=google&logoColor=white)](https://github.com/GoogleContainerTools/distroless)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 
 [🚀 Quick Start](#-quick-start) • [📊 Results](#-results) • [🛡 Security](#-security) • [⚙ App](#-application)
 </div>
@@ -25,6 +26,7 @@ A Go project that proves one thing: **how you build matters more than what you b
 ## 📊 Results
 <div align="center">
 
+
 ### 🏆 98.64% smaller
 **Baseline → Distroless** &nbsp;|&nbsp; `1,453.33 MB` → `19.75 MB`
 </div>
@@ -35,7 +37,6 @@ A Go project that proves one thing: **how you build matters more than what you b
 | Multi-stage | `debian:13-slim` | 130.68 MB |
 | Distroless | `gcr.io/distroless/static-debian13:nonroot` | **19.75 MB** |
 | Reduction | Saving |
-| :--- | ---: |
 | Baseline → Multi-stage | **91.01%** |
 | Multi-stage → Distroless | **84.88%** |
 | Baseline → Distroless | **98.64%** |
